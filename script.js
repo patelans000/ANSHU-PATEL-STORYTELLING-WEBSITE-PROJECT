@@ -37,32 +37,86 @@ const results = {
   gilded: {
     title: "The Gilded Realm",
     message:
-      "Your path flows through realms where magic stirs and legends breathe. You are drawn to wonders beyond the ordinary, where heroes rise and the impossible feels close."
+      "Your path flows through realms where magic stirs and legends breathe.",
+    media: [
+      "assets/media/gilded1.jpg",
+      "assets/media/gilded2.jpg",
+      "assets/media/gilded3.jpg",
+      "assets/media/gilded4.jpg",
+      "assets/media/gilded5.jpg",
+      "assets/media/gilded6.jpg"
+    ]
   },
+
+  
   starbound: {
     title: "The Starbound Mind",
     message:
-      "You are drawn to questions without borders. Futures shaped by curiosity, risk, and discovery call to you."
+      "You are drawn to futures shaped by curiosity and discovery.",
+    media: [
+      "assets/media/starbound1.jpg",
+      "assets/media/starbound2.jpg",
+      "assets/media/starbound3.jpg",
+      "assets/media/starbound4.jpg",
+      "assets/media/starbound5.jpg",
+      "assets/media/starbound6.jpg"
+    ]
   },
+
   veiled: {
     title: "The Veiled Truth",
     message:
-      "Your path winds through secrets and puzzles waiting to be unraveled. Every detail matters, and truth hides beneath perception."
+      "Your path winds through secrets and puzzles waiting to be unraveled.",
+    media: [
+      "assets/media/veiled1.jpg",
+      "assets/media/veiled2.jpg",
+      "assets/media/veiled3.jpg",
+      "assets/media/veiled4.jpg",
+      "assets/media/veiled5.jpg",
+      "assets/media/veiled6.jpg"
+    ]
   },
+
   tethered: {
     title: "The Tethered Heart",
     message:
-      "Love, connection, and emotion chart your course. Bonds endure, and intimacy lingers long after the tale ends."
+      "Love, connection, and emotion chart your course.",
+    media: [
+      "Romance Media 1",
+      "Romance Media 2",
+      "Romance Media 3",
+      "Romance Media 4",
+      "Romance Media 5",
+      "Romance Media 6"
+    ]
   },
+
   whispering: {
     title: "The Whispering Dark",
     message:
-      "You are drawn to the shadows and the thrill of the unknown. Stories that unsettle and linger call to you."
+      "You are drawn to the shadows and the thrill of the unknown.",
+    media: [
+      "Horror Media 1",
+      "Horror Media 2",
+      "Horror Media 3",
+      "Horror Media 4",
+      "Horror Media 5",
+      "Horror Media 6"
+    ]
   },
+
   roaming: {
     title: "The Roaming Flame",
     message:
-      "Your path blazes with daring and motion. Adventure calls, and you chase glory wherever it leads."
+      "Your path blazes with daring and motion. Adventure calls.",
+    media: [
+      "Adventure Media 1",
+      "Adventure Media 2",
+      "Adventure Media 3",
+      "Adventure Media 4",
+      "Adventure Media 5",
+      "Adventure Media 6"
+    ]
   }
 };
 
@@ -173,6 +227,7 @@ function selectAnswer(effects) {
 function showResult() {
   const maxScore = Math.max(...Object.values(scores));
   const tied = Object.keys(scores).filter(k => scores[k] === maxScore);
+
   const finalPath = tied.reduce((a, b) =>
     firstHit[a] < firstHit[b] ? a : b
   );
@@ -183,8 +238,18 @@ function showResult() {
   document.getElementById("result-message").textContent =
     results[finalPath].message;
 
+  const slots = document.querySelectorAll(".media-slot");
+  const mediaItems = results[finalPath].media;
+
+  slots.forEach((slot, index) => {
+  slot.innerHTML = `
+    <img src="${mediaItems[index]}" alt="Recommended Media">
+  `;
+});
+
   showScreen("result-screen");
 }
+
 
 // START
 showQuestion();
