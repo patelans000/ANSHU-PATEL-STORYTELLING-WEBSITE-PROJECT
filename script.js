@@ -82,12 +82,12 @@ const results = {
     message:
       "Love, connection, and emotion chart your course.",
     media: [
-      "Romance Media 1",
-      "Romance Media 2",
-      "Romance Media 3",
-      "Romance Media 4",
-      "Romance Media 5",
-      "Romance Media 6"
+      "assets/media/tethered1.jpg",
+      "assets/media/tethered2.jpg",
+      "assets/media/tethered3.jpg",
+      "assets/media/tethered4.jpg",
+      "assets/media/tethered5.jpg",
+      "assets/media/tethered6.jpg"
     ]
   },
 
