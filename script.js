@@ -96,12 +96,12 @@ const results = {
     message:
       "You are drawn to the shadows and the thrill of the unknown.",
     media: [
-      "Horror Media 1",
-      "Horror Media 2",
-      "Horror Media 3",
-      "Horror Media 4",
-      "Horror Media 5",
-      "Horror Media 6"
+      "assets/media/whispering1.jpg",
+      "assets/media/whispering2.jpg",
+      "assets/media/whispering3.jpg",
+      "assets/media/whispering4.jpg",
+      "assets/media/whispering5.jpg",
+      "assets/media/whispering6.jpg"
     ]
   },
 
@@ -110,12 +110,12 @@ const results = {
     message:
       "Your path blazes with daring and motion. Adventure calls.",
     media: [
-      "Adventure Media 1",
-      "Adventure Media 2",
-      "Adventure Media 3",
-      "Adventure Media 4",
-      "Adventure Media 5",
-      "Adventure Media 6"
+      "assets/media/roaming1.jpg",
+      "assets/media/roaming2.jpg",
+      "assets/media/roaming3.jpg",
+      "assets/media/roaming4.jpg",
+      "assets/media/roaming5.jpg",
+      "assets/media/roaming6.jpg"
     ]
   }
 };
