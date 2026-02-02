@@ -11,8 +11,19 @@ function showScreen(id) {
 document.getElementById("start-btn").onclick = () =>
   showScreen("oracle-screen");
 
-document.querySelector(".magic-ball").onclick = () =>
+const oracleAdvance = document.getElementById("oracle-advance");
+
+oracleAdvance.addEventListener("click", () => {
   showScreen("quiz-screen");
+});
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
 
 document.getElementById("restart-btn").onclick = () =>
   location.reload();
@@ -28,6 +39,7 @@ const scores = {
   whispering: 0,
   roaming: 0
 };
+
 
 // TIE BREAKER
 const firstHit = {};

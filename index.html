@@ -24,29 +24,39 @@
 <section class="screen" id="oracle-screen">
   <div class="intro-layout">
     <div class="speech-bubble">I see many paths before you…</div>
-    <div class="oracle-large">ORACLE</div>
-    <button class="magic-ball">◯</button>
+    <img
+    src="assets/images/oracle.png"
+    alt="Oracle"
+    class="oracle-large clickable-oracle"
+    id="oracle-advance"
+/>
   </div>
 </section>
 
 <!-- QUIZ SCREEN -->
 <section class="screen" id="quiz-screen">
   <div class="quiz-layout">
-
     <div class="oracle-column">
       <div class="speech-bubble" id="question-text"></div>
-      <div class="oracle">ORACLE</div>
-    </div>
 
-    <div class="answers">
-      <button class="answer-btn"></button>
-      <button class="answer-btn"></button>
-      <button class="answer-btn"></button>
-      <button class="answer-btn"></button>
-      <button class="answer-btn"></button>
-      <button class="answer-btn"></button>
-    </div>
+      <div class="oracle-wrapper">
+        <img
+          src="assets/images/oracle.png"
+          alt="Oracle"
+          class="oracle oracle-small"
+        />
+      </div>
 
+      <div class="answers">
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -56,9 +66,14 @@
 
     <div class="oracle-column">
       <div class="speech-bubble">Your path is chosen.</div>
-      <div class="oracle">ORACLE</div>
+      <div class="oracle-wrapper">
+        <img
+          src="assets/images/oracle.png"
+          alt="Oracle"
+          class="oracle oracle-small"
+        />
+      </div>
     </div>
-
     <div class="result-text">
       <h2 id="result-title"></h2>
       <p id="result-message"></p>

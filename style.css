@@ -120,26 +120,63 @@ body {
   }
 }
 
+.oracle-small {
+  width: min(220px, 38vw); /* bigger than before */
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
 
-.oracle,
-.oracle-large {
-  border: 2px solid #501537;
-  background: #922D50;
-  color: #fff;
+.oracle-wrapper {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  animation: oracle-float 5s ease-in-out infinite;
+}
+
+.oracle-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -28px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(212,231,158,0.45),
+    rgba(212,231,158,0.2),
+    transparent 70%
+  );
+
+  filter: blur(18px);
+  z-index: 0;
+
+  animation: oracle-glow 4s ease-in-out infinite;
 }
 
 .oracle {
-  width: min(40vw, 220px);
-  aspect-ratio: 3 / 4;
+  position: relative;
+  z-index: 2;
+  display: block;
 }
 
 .oracle-large {
-  width: min(70vw, 320px);
-  aspect-ratio: 3 / 4;
-  margin: 1rem 0;
+  width: min(360px, 80vw);
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.oracle-large:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 12px rgba(212,231,158,0.8));
+}
+
+.oracle-large:active {
+  transform: scale(0.98);
 }
 
 /* Magic Ball Button */
@@ -181,6 +218,11 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   
+}
+
+/* small gap to push answers down under the oracle image */
+#quiz-screen .oracle-wrapper + .answers {
+  margin-top: 20px;
 }
 
 .answer-btn {
@@ -231,9 +273,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 100%;
+  width: min(100%, 1200px);
   max-width: 1200px;
+  align-self: center;
 }
+
+/* Center the result layout container on wide screens */
+.result-layout {
+  margin: 0 auto;
+}
+
+/* Make sure the result screen itself centers its child container */
+/* `#result-screen` visibility controlled by `.screen` / `.screen.active` rules. */
 
 .result-text {
   text-align: center;
@@ -261,6 +312,52 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* Glow and hover scale for media slots (result page) */
+.media-slot {
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+  will-change: transform, box-shadow;
+  border-radius: 10px;
+}
+
+.media-slot:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 8px 24px rgba(184,196,128,0.35),
+    0 0 32px rgba(184,196,128,0.22);
+  z-index: 5;
+}
+
+.media-slot:hover img {
+  transform: scale(1.02);
+}
+
+/* Use the same green glow for interactive buttons and add scale on hover */
+#start-btn,
+#restart-btn,
+.answer-btn,
+.magic-ball {
+  transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms ease, border-color 180ms ease;
+  will-change: transform, box-shadow;
+}
+
+#start-btn:hover,
+#restart-btn:hover,
+.answer-btn:hover,
+.magic-ball:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 10px 30px rgba(184,196,128,0.36),
+    0 0 40px rgba(184,196,128,0.18);
+  border-color: rgba(212,231,158,0.6);
+  z-index: 6;
+}
+
+/* Slight image lift on button hover for better visual weight */
+.answer-btn:hover img,
+.media-slot:hover img {
+  transition: transform 220ms ease;
 }
 
 
@@ -298,6 +395,115 @@ body {
   .result-text {
     text-align: left;
     max-width: 500px;
+  }
+
+  /* Ensure on wide screens the quiz content stacks vertically so
+     the oracle image sits under the speech-bubble (desktop layout) */
+  #quiz-screen .quiz-layout {
+    /* force column for quiz only so the oracle appears beneath the text */
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  /* Keep the speech bubble visually above the oracle */
+  #quiz-screen .speech-bubble {
+    z-index: 3;
+    margin-bottom: 0.75rem;
+    max-width: 680px;
+  }
+
+  /* Make sure the oracle wrapper centers and constrains image size */
+  #quiz-screen .oracle-wrapper {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  /* Stack the inner oracle image above the answers */
+  #quiz-screen .oracle-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  /* Target the nested wrapper that actually contains the image */
+  #quiz-screen .oracle-wrapper > .oracle-wrapper {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  #quiz-screen .oracle-wrapper .answers {
+    order: 2;
+    width: 100%;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+/* Small vertical padding so the oracle has breathing room */
+#quiz-screen .oracle-wrapper {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  #quiz-screen .oracle-wrapper {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Add explicit bottom spacing under the oracle image */
+#quiz-screen .oracle-small {
+  padding-bottom: 20px;
+}
+
+  #quiz-screen .oracle-small {
+    width: min(320px, 34vw);
+    max-width: 420px;
+  }
+
+  /* Place the answer grid under the oracle on desktop */
+  #quiz-screen .answers {
+    order: 3;
+    width: 100%;
+    max-width: 920px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-self: center;
+  }
+}
+
+/* Result screen: make oracle slightly larger and nudge it down a bit */
+/* Result screen: make oracle a bit larger and move it closer to the title */
+#result-screen .oracle-small {
+  width: min(480px, 40vw);
+  max-width: 560px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 900px) {
+  /* pull the oracle up slightly so it sits nearer the speech bubble/title */
+  #result-screen .oracle-wrapper {
+    margin-top: 0.5rem;
+    transform: translateY(-8px);
+  }
+
+  /* ensure oracle column centers nicely with the result text */
+  #result-screen .oracle-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 .answer-btn::before,
