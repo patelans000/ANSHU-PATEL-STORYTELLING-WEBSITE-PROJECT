@@ -1,99 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Oracle Reading</title>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Oracle Reading</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- BACKGROUND -->
+    <img src="assets/images/background.png" class="bg" />
 
-<!-- BACKGROUND -->
-<img src="assets/images/background.png" class="bg">
-
-<!-- TITLE SCREEN -->
-<section class="screen active" id="title-screen">
-  <div class="title-container">
-    <img src="assets/images/logo.png" alt="Logo" class="logo">
-    <button id="start-btn">Venture forth for a reading...</button>
-  </div>
-</section>
-
-<!-- INTRO SCREEN -->
-<section class="screen" id="oracle-screen">
-  <div class="intro-layout">
-    <div class="speech-bubble">I see many paths before you…</div>
-    <img
-    src="assets/images/oracle.png"
-    alt="Oracle"
-    class="oracle-large clickable-oracle"
-    id="oracle-advance"
-/>
-  </div>
-</section>
-
-<!-- QUIZ SCREEN -->
-<section class="screen" id="quiz-screen">
-  <div class="quiz-layout">
-    <div class="oracle-column">
-      <div class="speech-bubble" id="question-text"></div>
-
-      <div class="oracle-wrapper">
-        <img
-          src="assets/images/oracle.png"
-          alt="Oracle"
-          class="oracle oracle-small"
-        />
+    <!-- TITLE SCREEN -->
+    <section class="screen active" id="title-screen">
+      <div class="title-container">
+        <img src="assets/images/logo.png" alt="Logo" class="logo" />
+        <button id="start-btn">Venture forth for a reading...</button>
       </div>
+    </section>
 
-      <div class="answers">
-        <button class="answer-btn"></button>
-        <button class="answer-btn"></button>
-        <button class="answer-btn"></button>
-        <button class="answer-btn"></button>
-        <button class="answer-btn"></button>
-        <button class="answer-btn"></button>
+    <!-- INTRO SCREEN -->
+    <section class="screen" id="oracle-screen">
+      <div class="intro-layout">
+        <div class="speech-bubble">I see many paths before you…</div>
+        <img src="assets/images/oracle.png" alt="Oracle" class="oracle-large clickable-oracle" id="oracle-advance" />
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
+    <!-- QUIZ SCREEN -->
+    <section class="screen" id="quiz-screen">
+      <div class="quiz-layout">
+        <div class="oracle-column">
+          <div class="speech-bubble" id="question-text"></div>
 
-<!-- RESULT SCREEN -->
-<section class="screen" id="result-screen">
-  <div class="result-layout">
+          <div class="oracle-wrapper">
+            <img src="assets/images/oracle.png" alt="Oracle" class="oracle oracle-small" />
+          </div>
 
-    <div class="oracle-column">
-      <div class="speech-bubble">Your path is chosen.</div>
-      <div class="oracle-wrapper">
-        <img
-          src="assets/images/oracle.png"
-          alt="Oracle"
-          class="oracle oracle-small"
-        />
+          <div class="answers">
+            <button class="answer-btn"></button>
+            <button class="answer-btn"></button>
+            <button class="answer-btn"></button>
+            <button class="answer-btn"></button>
+            <button class="answer-btn"></button>
+            <button class="answer-btn"></button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="result-text">
-      <h2 id="result-title"></h2>
-      <p id="result-message"></p>
+    </section>
 
-      <!-- MEDIA RECOMMENDATIONS -->
-      <div class="media-grid">
-        <div class="media-slot"></div>
-        <div class="media-slot"></div>
-        <div class="media-slot"></div>
-        <div class="media-slot"></div>
-        <div class="media-slot"></div>
-        <div class="media-slot"></div>
+    <!-- RESULT SCREEN -->
+    <section class="screen" id="result-screen">
+      <div class="result-layout">
+        <div class="oracle-column">
+          <div class="speech-bubble">Your path is chosen.</div>
+          <div class="oracle-wrapper">
+            <img src="assets/images/oracle.png" alt="Oracle" class="oracle oracle-small" />
+          </div>
+        </div>
+        <div class="result-text">
+          <h2 id="result-title"></h2>
+          <p id="result-message"></p>
+
+          <!-- MEDIA RECOMMENDATIONS -->
+          <div class="media-grid">
+            <div class="media-slot"></div>
+            <div class="media-slot"></div>
+            <div class="media-slot"></div>
+            <div class="media-slot"></div>
+            <div class="media-slot"></div>
+            <div class="media-slot"></div>
+          </div>
+
+          <button id="restart-btn">Restart your journey...</button>
+        </div>
       </div>
+    </section>
 
-      <button id="restart-btn">Restart your journey...</button>
-    </div>
-
-  </div>
-</section>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,32 +1,19 @@
-
-
-// SEPERATING MY SCREENS (to be similar to figma wireframes)
-const screens = document. querySelectorAll(".screen");
+// SCREEN NAVIGATION
+const screens = document.querySelectorAll(".screen");
 
 function showScreen(id) {
-    screens.forEach(screen => screen.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+  screens.forEach((screen) => screen.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 
-document.getElementById("start-btn").onclick = () =>
-  showScreen("oracle-screen");
+document.getElementById("start-btn").onclick = () => showScreen("oracle-screen");
 
 const oracleAdvance = document.getElementById("oracle-advance");
-
 oracleAdvance.addEventListener("click", () => {
   showScreen("quiz-screen");
 });
 
-function showScreen(id) {
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
-}
-
-document.getElementById("restart-btn").onclick = () =>
-  location.reload();
+document.getElementById("restart-btn").onclick = () => location.reload();
 
 // QUIZ STATE
 let currentQuestion = 0;
@@ -37,9 +24,8 @@ const scores = {
   veiled: 0,
   tethered: 0,
   whispering: 0,
-  roaming: 0
+  roaming: 0,
 };
-
 
 // TIE BREAKER
 const firstHit = {};
@@ -48,104 +34,90 @@ const firstHit = {};
 const results = {
   gilded: {
     title: "The Gilded Realm",
-    message:
-      "Your path flows through realms where magic stirs and legends breathe.",
+    message: "Your path flows through realms where magic stirs and legends breathe.",
     media: [
       "assets/media/gilded1.jpg",
       "assets/media/gilded2.jpg",
       "assets/media/gilded3.jpg",
       "assets/media/gilded4.jpg",
       "assets/media/gilded5.jpg",
-      "assets/media/gilded6.jpg"
-    ]
+      "assets/media/gilded6.jpg",
+    ],
   },
-
-  
   starbound: {
     title: "The Starbound Mind",
-    message:
-      "You are drawn to futures shaped by curiosity and discovery.",
+    message: "You are drawn to futures shaped by curiosity and discovery.",
     media: [
       "assets/media/starbound1.jpg",
       "assets/media/starbound2.jpg",
       "assets/media/starbound3.jpg",
       "assets/media/starbound4.jpg",
       "assets/media/starbound5.jpg",
-      "assets/media/starbound6.jpg"
-    ]
+      "assets/media/starbound6.jpg",
+    ],
   },
-
   veiled: {
     title: "The Veiled Truth",
-    message:
-      "Your path winds through secrets and puzzles waiting to be unraveled.",
+    message: "Your path winds through secrets and puzzles waiting to be unraveled.",
     media: [
       "assets/media/veiled1.jpg",
       "assets/media/veiled2.jpg",
       "assets/media/veiled3.jpg",
       "assets/media/veiled4.jpg",
       "assets/media/veiled5.jpg",
-      "assets/media/veiled6.jpg"
-    ]
+      "assets/media/veiled6.jpg",
+    ],
   },
-
   tethered: {
     title: "The Tethered Heart",
-    message:
-      "Love, connection, and emotion chart your course.",
+    message: "Love, connection, and emotion chart your course.",
     media: [
       "assets/media/tethered1.jpg",
       "assets/media/tethered2.jpg",
       "assets/media/tethered3.jpg",
       "assets/media/tethered4.jpg",
       "assets/media/tethered5.jpg",
-      "assets/media/tethered6.jpg"
-    ]
+      "assets/media/tethered6.jpg",
+    ],
   },
-
   whispering: {
     title: "The Whispering Dark",
-    message:
-      "You are drawn to the shadows and the thrill of the unknown.",
+    message: "You are drawn to the shadows and the thrill of the unknown.",
     media: [
       "assets/media/whispering1.jpg",
       "assets/media/whispering2.jpg",
       "assets/media/whispering3.jpg",
       "assets/media/whispering4.jpg",
       "assets/media/whispering5.jpg",
-      "assets/media/whispering6.jpg"
-    ]
+      "assets/media/whispering6.jpg",
+    ],
   },
-
   roaming: {
     title: "The Roaming Flame",
-    message:
-      "Your path blazes with daring and motion. Adventure calls.",
+    message: "Your path blazes with daring and motion. Adventure calls.",
     media: [
       "assets/media/roaming1.jpg",
       "assets/media/roaming2.jpg",
       "assets/media/roaming3.jpg",
       "assets/media/roaming4.jpg",
       "assets/media/roaming5.jpg",
-      "assets/media/roaming6.jpg"
-    ]
-  }
+      "assets/media/roaming6.jpg",
+    ],
+  },
 };
 
 // QUESTIONS
-
 const questions = [
   {
-    text:
-      "You step into my chamber at dusk. What do you seek from the stories yet to come?",
+    text: "You step into my chamber at dusk. What do you seek from the stories yet to come?",
     answers: [
       { text: "To walk where rules bend and wonders breathe.", effects: { gilded: 2 } },
       { text: "To glimpse what tomorrow may become.", effects: { starbound: 2 } },
       { text: "To uncover what hides beneath the surface.", effects: { veiled: 2 } },
       { text: "To feel something stir deeply within you.", effects: { tethered: 2 } },
       { text: "To feel your pulse quicken in the dark.", effects: { whispering: 2 } },
-      { text: "To chase excitement where danger waits.", effects: { roaming: 2 } }
-    ]
+      { text: "To chase excitement where danger waits.", effects: { roaming: 2 } },
+    ],
   },
   {
     text: "A door appears before you. Where does it open?",
@@ -155,8 +127,8 @@ const questions = [
       { text: "A quiet place where something feels wrong.", effects: { veiled: 2, whispering: 1 } },
       { text: "Somewhere shaped by bonds between people.", effects: { tethered: 2 } },
       { text: "Somewhere no one should linger after nightfall.", effects: { whispering: 2 } },
-      { text: "Somewhere wild, untamed, and full of peril.", effects: { roaming: 2 } }
-    ]
+      { text: "Somewhere wild, untamed, and full of peril.", effects: { roaming: 2 } },
+    ],
   },
   {
     text: "Someone walks beside you on this journey. Who are they?",
@@ -166,8 +138,8 @@ const questions = [
       { text: "A watcher who notices what others miss.", effects: { veiled: 2 } },
       { text: "A soul shaped by love and longing.", effects: { tethered: 2 } },
       { text: "Someone carrying terrible secrets.", effects: { whispering: 2, veiled: 1 } },
-      { text: "A daring comrade ready to face any danger.", effects: { roaming: 2 } }
-    ]
+      { text: "A daring comrade ready to face any danger.", effects: { roaming: 2 } },
+    ],
   },
   {
     text: "Every tale must fracture. What kind of trial draws you in?",
@@ -177,8 +149,8 @@ const questions = [
       { text: "A truth that refuses to stay buried.", effects: { veiled: 2 } },
       { text: "A bond tested by circumstance.", effects: { tethered: 2 } },
       { text: "A presence that should not exist.", effects: { whispering: 2 } },
-      { text: "A challenge that tests courage and cunning.", effects: { roaming: 2 } }
-    ]
+      { text: "A challenge that tests courage and cunning.", effects: { roaming: 2 } },
+    ],
   },
   {
     text: "When the tale ends, what do you wish lingers?",
@@ -188,8 +160,8 @@ const questions = [
       { text: "Satisfaction from pieces falling into place.", effects: { veiled: 2 } },
       { text: "A warmth you carry with you.", effects: { tethered: 2 } },
       { text: "Unease that follows you into the night.", effects: { whispering: 2 } },
-      { text: "The thrill of daring deeds.", effects: { roaming: 2 } }
-    ]
+      { text: "The thrill of daring deeds.", effects: { roaming: 2 } },
+    ],
   },
   {
     text: "One thread of fate remains. Which do you pull?",
@@ -199,13 +171,12 @@ const questions = [
       { text: "The hidden and unresolved.", effects: { veiled: 2 } },
       { text: "The fragile and precious.", effects: { tethered: 2 } },
       { text: "The forbidden and forgotten.", effects: { whispering: 2 } },
-      { text: "The path through danger and glory.", effects: { roaming: 2 } }
-    ]
-  }
+      { text: "The path through danger and glory.", effects: { roaming: 2 } },
+    ],
+  },
 ];
 
 // QUIZ LOGIC
-
 const questionText = document.getElementById("question-text");
 const buttons = document.querySelectorAll(".answer-btn");
 
@@ -238,30 +209,24 @@ function selectAnswer(effects) {
 
 function showResult() {
   const maxScore = Math.max(...Object.values(scores));
-  const tied = Object.keys(scores).filter(k => scores[k] === maxScore);
+  const tied = Object.keys(scores).filter((k) => scores[k] === maxScore);
 
   const finalPath = tied.reduce((a, b) =>
     firstHit[a] < firstHit[b] ? a : b
   );
 
-  document.getElementById("result-title").textContent =
-    results[finalPath].title;
-
-  document.getElementById("result-message").textContent =
-    results[finalPath].message;
+  document.getElementById("result-title").textContent = results[finalPath].title;
+  document.getElementById("result-message").textContent = results[finalPath].message;
 
   const slots = document.querySelectorAll(".media-slot");
   const mediaItems = results[finalPath].media;
 
   slots.forEach((slot, index) => {
-  slot.innerHTML = `
-    <img src="${mediaItems[index]}" alt="Recommended Media">
-  `;
-});
+    slot.innerHTML = `<img src="${mediaItems[index]}" alt="Recommended Media" />`;
+  });
 
   showScreen("result-screen");
 }
 
-
-// START
+// START QUIZ
 showQuestion();

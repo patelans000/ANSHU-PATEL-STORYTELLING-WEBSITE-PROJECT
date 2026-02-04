@@ -1,20 +1,21 @@
-/* HEX CODES:
-Darker green: B8C480
-Lighter green: D4E79E
-Lighter magenta: 922D50
-Darker magenta: 501537
-Dark purple: 3C1B43 */
+/*
+  HEX CODES:
+  - Darker green: B8C480
+  - Lighter green: D4E79E
+  - Lighter magenta: 922D50
+  - Darker magenta: 501537
+  - Dark purple: 3C1B43
+*/
 
 * {
   box-sizing: border-box;
-
 }
 
 body {
   margin: 0;
-  background: #3C1B43;
-  color: #D4E79E;
-  font-family: 'VT323', monospace;
+  background: #3c1b43;
+  color: #d4e79e;
+  font-family: "VT323", monospace;
   font-size: 1.4rem;
 }
 
@@ -50,7 +51,7 @@ body {
 
 .logo {
   width: 100%;
-  max-width: 420px; 
+  max-width: 420px;
   height: auto;
 }
 
@@ -60,59 +61,42 @@ body {
   cursor: pointer;
   color: #501537;
   background: #b8c480;
-  border: 0px;
-  border-radius: 8px; 
-  font-family: 'VT323', monospace;
-
+  border: 0;
+  border-radius: 8px;
+  font-family: "VT323", monospace;
 }
 
-
-/* Placeholders For Stuff */
+/* Speech Bubble */
 .speech-bubble {
   position: relative;
   padding: 28px 34px;
   max-width: 460px;
   margin-bottom: 30px;
-
   background: #b8c480;
   border-radius: 44px;
   color: #3c1b43;
-
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 22px;
   line-height: 1.45;
-
-  box-shadow:
-    0 10px 0 rgba(80,21,55,0.25),
-    0 0 30px rgba(212,231,158,0.6);
-
+  box-shadow: 0 10px 0 rgba(80, 21, 55, 0.25), 0 0 30px rgba(212, 231, 158, 0.6);
   animation: bubble-float 3s ease-in-out infinite;
 }
 
 .speech-bubble::after {
   content: "";
   position: absolute;
-
   width: 25px;
   height: 75px;
-
   background: #b8c480;
-
   bottom: -40px;
   left: 60%;
-  transform:
-    translateX(-50%)
-    rotate(20deg)
-    skewX(-20deg);
-
-  border-radius:
-    0 0 80% 20% / 0 0 100% 40%;
-
+  transform: translateX(-50%) rotate(20deg) skewX(-20deg);
+  border-radius: 0 0 80% 20% / 0 0 100% 40%;
 }
 
-
 @keyframes bubble-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -121,7 +105,7 @@ body {
 }
 
 .oracle-small {
-  width: min(220px, 38vw); /* bigger than before */
+  width: min(220px, 38vw);
   height: auto;
   position: relative;
   z-index: 2;
@@ -132,9 +116,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
-
   animation: oracle-float 5s ease-in-out infinite;
 }
 
@@ -143,17 +125,14 @@ body {
   position: absolute;
   inset: -28px;
   border-radius: 50%;
-
   background: radial-gradient(
     circle,
-    rgba(212,231,158,0.45),
-    rgba(212,231,158,0.2),
+    rgba(212, 231, 158, 0.45),
+    rgba(212, 231, 158, 0.2),
     transparent 70%
   );
-
   filter: blur(18px);
   z-index: 0;
-
   animation: oracle-glow 4s ease-in-out infinite;
 }
 
@@ -172,7 +151,7 @@ body {
 
 .oracle-large:hover {
   transform: scale(1.06);
-  filter: drop-shadow(0 0 12px rgba(212,231,158,0.8));
+  filter: drop-shadow(0 0 12px rgba(212, 231, 158, 0.8));
 }
 
 .oracle-large:active {
@@ -187,7 +166,7 @@ body {
   border: 2px solid #501537;
   background: transparent;
   font-size: 4rem;
-  color: #922D50;
+  color: #922d50;
   cursor: pointer;
 }
 
@@ -217,10 +196,9 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  
 }
 
-/* small gap to push answers down under the oracle image */
+/* Small gap to push answers down under the oracle image */
 #quiz-screen .oracle-wrapper + .answers {
   margin-top: 20px;
 }
@@ -230,31 +208,22 @@ body {
   width: 100%;
   max-width: 620px;
   padding: 22px 24px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(184,196,128,0.12),
-      rgba(60,27,67,0.85)
-    );
-
-  border: 2px solid rgba(212,231,158,0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(184, 196, 128, 0.12),
+    rgba(60, 27, 67, 0.85)
+  );
+  border: 2px solid rgba(212, 231, 158, 0.35);
   border-radius: 14px;
-
   color: #d4e79e;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 22px;
   text-align: center;
-
   cursor: pointer;
   overflow: hidden;
-
   backdrop-filter: blur(6px);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: oracle-breathe 4s ease-in-out infinite;
 }
 
 #restart-btn {
@@ -263,9 +232,9 @@ body {
   cursor: pointer;
   color: #501537;
   background: #b8c480;
-  border: 0px;
-  border-radius: 8px; 
-  font-family: 'VT323', monospace;
+  border: 0;
+  border-radius: 8px;
+  font-family: "VT323", monospace;
 }
 
 /* Result Layout */
@@ -275,21 +244,13 @@ body {
   gap: 2rem;
   width: min(100%, 1200px);
   max-width: 1200px;
-  align-self: center;
-}
-
-/* Center the result layout container on wide screens */
-.result-layout {
   margin: 0 auto;
 }
 
-/* Make sure the result screen itself centers its child container */
-/* `#result-screen` visibility controlled by `.screen` / `.screen.active` rules. */
-
 .result-text {
   text-align: center;
-  
 }
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -305,6 +266,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 220ms ease;
+  will-change: transform, box-shadow;
+  border-radius: 10px;
 }
 
 .media-slot img {
@@ -314,18 +278,9 @@ body {
   border-radius: 10px;
 }
 
-/* Glow and hover scale for media slots (result page) */
-.media-slot {
-  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
-  will-change: transform, box-shadow;
-  border-radius: 10px;
-}
-
 .media-slot:hover {
   transform: scale(1.06);
-  box-shadow:
-    0 8px 24px rgba(184,196,128,0.35),
-    0 0 32px rgba(184,196,128,0.22);
+  box-shadow: 0 8px 24px rgba(184, 196, 128, 0.35), 0 0 32px rgba(184, 196, 128, 0.22);
   z-index: 5;
 }
 
@@ -333,12 +288,12 @@ body {
   transform: scale(1.02);
 }
 
-/* Use the same green glow for interactive buttons and add scale on hover */
+/* Interactive button hover effects */
 #start-btn,
 #restart-btn,
 .answer-btn,
 .magic-ball {
-  transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms ease, border-color 180ms ease;
+  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 180ms ease, border-color 180ms ease;
   will-change: transform, box-shadow;
 }
 
@@ -347,36 +302,41 @@ body {
 .answer-btn:hover,
 .magic-ball:hover {
   transform: scale(1.08);
-  box-shadow:
-    0 10px 30px rgba(184,196,128,0.36),
-    0 0 40px rgba(184,196,128,0.18);
-  border-color: rgba(212,231,158,0.6);
+  box-shadow: 0 10px 30px rgba(184, 196, 128, 0.36), 0 0 40px rgba(184, 196, 128, 0.18);
+  border-color: rgba(212, 231, 158, 0.6);
   z-index: 6;
 }
 
-/* Slight image lift on button hover for better visual weight */
+/* Image transitions on hover */
 .answer-btn:hover img,
 .media-slot:hover img {
   transition: transform 220ms ease;
 }
 
-
-/* Desktop Layout */
+/* Animations */
 @keyframes oracle-breathe {
-  0%, 100% {
-    box-shadow: 0 0 12px rgba(146,45,80,0.35);
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(146, 45, 80, 0.35);
   }
   50% {
-    box-shadow: 0 0 20px rgba(212,231,158,0.55);
+    box-shadow: 0 0 20px rgba(212, 231, 158, 0.55);
   }
 }
 
-.answer-btn {
-  animation: oracle-breathe 4s ease-in-out infinite;
+/* Small vertical padding so the oracle has breathing room */
+#quiz-screen .oracle-wrapper {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
-@media (min-width: 900px) {
+/* Add explicit bottom spacing under the oracle image */
+#quiz-screen .oracle-small {
+  padding-bottom: 20px;
+}
 
+/* Desktop Layout */
+@media (min-width: 900px) {
   .quiz-layout {
     flex-direction: row;
     align-items: center;
@@ -400,7 +360,6 @@ body {
   /* Ensure on wide screens the quiz content stacks vertically so
      the oracle image sits under the speech-bubble (desktop layout) */
   #quiz-screen .quiz-layout {
-    /* force column for quiz only so the oracle appears beneath the text */
     flex-direction: column;
     align-items: center;
     gap: 2.5rem;
@@ -421,13 +380,10 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 0;
-  }
-
-  /* Stack the inner oracle image above the answers */
-  #quiz-screen .oracle-wrapper {
     flex-direction: column;
     gap: 1rem;
-    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   /* Target the nested wrapper that actually contains the image */
@@ -448,24 +404,6 @@ body {
     gap: 1.25rem;
   }
 
-/* Small vertical padding so the oracle has breathing room */
-#quiz-screen .oracle-wrapper {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-@media (min-width: 900px) {
-  #quiz-screen .oracle-wrapper {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-}
-
-/* Add explicit bottom spacing under the oracle image */
-#quiz-screen .oracle-small {
-  padding-bottom: 20px;
-}
-
   #quiz-screen .oracle-small {
     width: min(320px, 34vw);
     max-width: 420px;
@@ -481,24 +419,21 @@ body {
     gap: 1.25rem;
     align-self: center;
   }
-}
 
-/* Result screen: make oracle slightly larger and nudge it down a bit */
-/* Result screen: make oracle a bit larger and move it closer to the title */
-#result-screen .oracle-small {
-  width: min(480px, 40vw);
-  max-width: 560px;
-  padding-bottom: 20px;
-}
+  /* Result screen: make oracle a bit larger and move it closer to the title */
+  #result-screen .oracle-small {
+    width: min(480px, 40vw);
+    max-width: 560px;
+    padding-bottom: 20px;
+  }
 
-@media (min-width: 900px) {
-  /* pull the oracle up slightly so it sits nearer the speech bubble/title */
+  /* Pull the oracle up slightly so it sits nearer the speech bubble/title */
   #result-screen .oracle-wrapper {
     margin-top: 0.5rem;
     transform: translateY(-8px);
   }
 
-  /* ensure oracle column centers nicely with the result text */
+  /* Ensure oracle column centers nicely with the result text */
   #result-screen .oracle-column {
     display: flex;
     flex-direction: column;
@@ -506,98 +441,4 @@ body {
     justify-content: center;
   }
 }
-.answer-btn::before,
-.answer-btn::after {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(0.8);
-  opacity: 0;
-  color: #b8c480;
-  font-size: 18px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 
-.answer-btn::before {
-  left: 18px;
-}
-
-.answer-btn::after {
-  right: 18px;
-}
-
-/* TEXT SHIMMER */
-.answer-btn span {
-  background: linear-gradient(
-    90deg,
-    #d4e79e,
-    #b8c480,
-    #d4e79e
-  );
-  background-size: 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation: text-shimmer 3s linear infinite;
-}
-
-@keyframes text-shimmer {
-  to {
-    background-position: 200%;
-  }
-}
-
-/* HOVER STATE */
-.answer-btn:hover {
-  transform: scale(1.06);
-  border-color: #d4e79e;
-  box-shadow:
-    0 0 18px rgba(212,231,158,0.6),
-    0 0 40px rgba(146,45,80,0.4);
-}
-
-.answer-btn:hover::before,
-.answer-btn:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.2);
-}
-
-.answer-btn:hover {
-  animation: oracle-jitter 0.18s infinite;
-}
-
-@keyframes oracle-jitter {
-  0%   { transform: scale(1.06) translate(0,0); }
-  25%  { transform: scale(1.06) translate(1px,-1px); }
-  50%  { transform: scale(1.06) translate(-1px,1px); }
-  75%  { transform: scale(1.06) translate(1px,1px); }
-  100% { transform: scale(1.06) translate(0,0); }
-}
-
-.answer-btn:active {
-  transform: scale(0.98);
-}
-
-@media (max-width: 768px) {
-  .answer-btn {
-    font-size: 20px;
-    padding: 18px;
-  }
-}
-
-
-
-/* Hover Animations */
-.answer-btn:hover {
-  transform: scale(1.07);
-  animation: jitter 0.45s infinite;
-}
-
-@keyframes jitter {
-  0% { transform: translate(0,0) scale(1.07); }
-  25% { transform: translate(-1px,1px) scale(1.07); }
-  50% { transform: translate(1px,-1px) scale(1.07); }
-  75% { transform: translate(-1px,-1px) scale(1.07); }
-  100% { transform: translate(0,0) scale(1.07); }
-}
- 
